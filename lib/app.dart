@@ -84,18 +84,18 @@ class _CoreAppState extends State<CoreApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(
-      builder: (context, ref, child) {
-        final themeMode = ref.watch(themeModeProvider);
-        final locale = ref.watch(localeProvider);
-        ref.listen(themeModeProvider, (previous, next) {
-          if (next == ThemeMode.dark) {
-            setSystemNavigationBarColor(ThemeMode.dark == themeMode ? Colors.white : Colors.black);
-          }
-        });
-        return MultiBlocProvider(
-          providers: widget.providers,
-          child: Sizer(
+    return MultiBlocProvider(
+      providers: widget.providers,
+      child: Consumer(
+        builder: (context, ref, child) {
+          final themeMode = ref.watch(themeModeProvider);
+          final locale = ref.watch(localeProvider);
+          ref.listen(themeModeProvider, (previous, next) {
+            if (next == ThemeMode.dark) {
+              setSystemNavigationBarColor(ThemeMode.dark == themeMode ? Colors.white : Colors.black);
+            }
+          });
+          return Sizer(
             builder: (context, orientation, deviceType) {
               return MaterialApp.router(
                 locale: widget.locale ?? locale,
@@ -136,9 +136,9 @@ class _CoreAppState extends State<CoreApp> {
                 highContrastTheme: widget.highContrastTheme,
               );
             },
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
