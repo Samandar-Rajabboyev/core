@@ -22,7 +22,6 @@ class CoreApp extends MaterialApp {
   final Iterable<Locale>? dSupportedLocales;
   final GoRouter appRouter;
   final List<BlocProvider> providers;
-  final ThemeData initialTheme;
   final String? badInternetConnection;
   final String? appError;
 
@@ -30,7 +29,6 @@ class CoreApp extends MaterialApp {
     Key? key,
     this.badInternetConnection,
     this.appError,
-    required this.initialTheme,
     required this.providers,
     required this.appRouter,
     super.title,
