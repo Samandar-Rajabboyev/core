@@ -1,16 +1,13 @@
-import 'package:habit_tracker/src/core/app_state/cubit/app_cubit.dart';
+import 'package:core/app_state/providers/locale_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../generated/l10n.dart';
 import '../app_state/localization.dart';
 
 extension Localise on BuildContext {
-  String get locale => S.of(this).langCode;
-
   bool get uz {
     try {
-      read<AppCubit>().changeLocale(Localization.uz);
+      ProviderContainer().read(localeProvider.notifier).changeLocale(Localization.uz);
       return true;
     } catch (e) {
       return false;
@@ -19,7 +16,7 @@ extension Localise on BuildContext {
 
   bool get en {
     try {
-      read<AppCubit>().changeLocale(Localization.en);
+      ProviderContainer().read(localeProvider.notifier).changeLocale(Localization.en);
       return true;
     } catch (e) {
       return false;
@@ -28,7 +25,7 @@ extension Localise on BuildContext {
 
   bool get ru {
     try {
-      read<AppCubit>().changeLocale(Localization.ru);
+      ProviderContainer().read(localeProvider.notifier).changeLocale(Localization.ru);
       return true;
     } catch (e) {
       return false;

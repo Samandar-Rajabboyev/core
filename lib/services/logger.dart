@@ -49,7 +49,7 @@ class LogService {
 
   static void errorResponse(DioError error) {
     if (error.isNoConnection || error.isBadConnection) {
-      _logger.e('BAD CONNECTION: ${S.of(rootNavigator.currentContext!).badInternetConnection}');
+      _logger.e('BAD CONNECTION: $badInternetConnection');
     } else {
       _logger.e(
         'ERROR: ${error.message}\n'
