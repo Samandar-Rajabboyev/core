@@ -84,61 +84,58 @@ class _CoreAppState extends State<CoreApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: widget.providers,
-      child: Consumer(
-        builder: (context, ref, child) {
-          final themeMode = ref.watch(themeModeProvider);
-          final locale = ref.watch(localeProvider);
-          ref.listen(themeModeProvider, (previous, next) {
-            if (next == ThemeMode.dark) {
-              setSystemNavigationBarColor(ThemeMode.dark == themeMode ? Colors.white : Colors.black);
-            }
-          });
-          return Sizer(
-            builder: (context, orientation, deviceType) {
-              return MaterialApp.router(
-                locale: widget.locale ?? locale,
-                title: widget.title,
-                color: widget.color,
-                actions: widget.actions,
-                builder: widget.builder,
-                darkTheme: widget.darkTheme,
-                theme: widget.theme,
-                themeMode: widget.themeMode ?? themeMode,
-                routeInformationParser: widget.appRouter.routeInformationParser,
-                routeInformationProvider: widget.appRouter.routeInformationProvider,
-                routerDelegate: widget.appRouter.routerDelegate,
-                localizationsDelegates: [
-                  ...?(widget.localizationsDelegates),
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                supportedLocales: widget.dSupportedLocales ?? Localization.all,
-                debugShowCheckedModeBanner: widget.dDebugShowCheckedModeBanner ?? false,
-                debugShowMaterialGrid: widget.dDebugShowMaterialGrid ?? false,
-                checkerboardRasterCacheImages: widget.dCheckerboardRasterCacheImages ?? false,
-                checkerboardOffscreenLayers: widget.dCheckerboardOffscreenLayers ?? false,
-                showSemanticsDebugger: widget.dShowSemanticsDebugger ?? false,
-                showPerformanceOverlay: widget.dShowPerformanceOverlay ?? false,
-                localeListResolutionCallback: widget.localeListResolutionCallback,
-                localeResolutionCallback: widget.localeResolutionCallback,
-                onGenerateTitle: widget.onGenerateTitle,
-                restorationScopeId: widget.restorationScopeId,
-                scaffoldMessengerKey: widget.scaffoldMessengerKey,
-                scrollBehavior: widget.scrollBehavior,
-                shortcuts: widget.shortcuts,
-                useInheritedMediaQuery: widget.useInheritedMediaQuery,
-                themeAnimationCurve: widget.themeAnimationCurve,
-                themeAnimationDuration: widget.themeAnimationDuration,
-                highContrastDarkTheme: widget.highContrastDarkTheme,
-                highContrastTheme: widget.highContrastTheme,
-              );
-            },
-          );
-        },
-      ),
+    return Consumer(
+      builder: (context, ref, child) {
+        final themeMode = ref.watch(themeModeProvider);
+        final locale = ref.watch(localeProvider);
+        ref.listen(themeModeProvider, (previous, next) {
+          if (next == ThemeMode.dark) {
+            setSystemNavigationBarColor(ThemeMode.dark == themeMode ? Colors.white : Colors.black);
+          }
+        });
+        return Sizer(
+          builder: (context, orientation, deviceType) {
+            return MaterialApp.router(
+              locale: widget.locale ?? locale,
+              title: widget.title,
+              color: widget.color,
+              actions: widget.actions,
+              builder: widget.builder,
+              darkTheme: widget.darkTheme,
+              theme: widget.theme,
+              themeMode: widget.themeMode ?? themeMode,
+              routeInformationParser: widget.appRouter.routeInformationParser,
+              routeInformationProvider: widget.appRouter.routeInformationProvider,
+              routerDelegate: widget.appRouter.routerDelegate,
+              localizationsDelegates: [
+                ...?(widget.localizationsDelegates),
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: widget.dSupportedLocales ?? Localization.all,
+              debugShowCheckedModeBanner: widget.dDebugShowCheckedModeBanner ?? false,
+              debugShowMaterialGrid: widget.dDebugShowMaterialGrid ?? false,
+              checkerboardRasterCacheImages: widget.dCheckerboardRasterCacheImages ?? false,
+              checkerboardOffscreenLayers: widget.dCheckerboardOffscreenLayers ?? false,
+              showSemanticsDebugger: widget.dShowSemanticsDebugger ?? false,
+              showPerformanceOverlay: widget.dShowPerformanceOverlay ?? false,
+              localeListResolutionCallback: widget.localeListResolutionCallback,
+              localeResolutionCallback: widget.localeResolutionCallback,
+              onGenerateTitle: widget.onGenerateTitle,
+              restorationScopeId: widget.restorationScopeId,
+              scaffoldMessengerKey: widget.scaffoldMessengerKey,
+              scrollBehavior: widget.scrollBehavior,
+              shortcuts: widget.shortcuts,
+              useInheritedMediaQuery: widget.useInheritedMediaQuery,
+              themeAnimationCurve: widget.themeAnimationCurve,
+              themeAnimationDuration: widget.themeAnimationDuration,
+              highContrastDarkTheme: widget.highContrastDarkTheme,
+              highContrastTheme: widget.highContrastTheme,
+            );
+          },
+        );
+      },
     );
   }
 }
