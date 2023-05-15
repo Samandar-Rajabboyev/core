@@ -21,7 +21,6 @@ class CoreApp extends MaterialApp {
   final bool? dDebugShowCheckedModeBanner;
   final Iterable<Locale>? dSupportedLocales;
   final GoRouter appRouter;
-  final List<BlocProvider> providers;
   final String? badInternetConnection;
   final String? appError;
 
@@ -29,7 +28,6 @@ class CoreApp extends MaterialApp {
     Key? key,
     this.badInternetConnection,
     this.appError,
-    required this.providers,
     required this.appRouter,
     super.title,
     super.actions,
