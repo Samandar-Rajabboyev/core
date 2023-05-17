@@ -10,7 +10,7 @@ class LocaleNotifier extends StateNotifier<Locale> {
     if (locale != null) state = Locale(locale);
   }
 
-  LocaleNotifier() : super(Localization.uz) {
+  LocaleNotifier({Locale? initialLocale}) : super(initialLocale ?? Localization.en) {
     _init();
   }
 
