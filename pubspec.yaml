@@ -15,15 +15,10 @@ dependencies:
 
   intl: ^0.18.0
   cupertino_icons: ^1.0.2
-  get_it: ^7.2.0
-  flutter_bloc:
   retrofit: ^4.0.1
   shared_preferences: ^2.0.17
-  sizer:
-  flutter_svg:
   go_router: ^6.0.9
   logger: ^1.1.0
-  flex_color_scheme: ^7.0.3
   flutter_riverpod: ^2.3.5
 
 dev_dependencies:

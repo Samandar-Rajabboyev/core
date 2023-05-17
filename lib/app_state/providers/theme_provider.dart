@@ -1,4 +1,3 @@
-import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,7 +14,7 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
     _init();
   }
 
-  String get name => state.name.capitalize;
+  String get name => state.name.substring(0, 1).toUpperCase() + state.name.substring(1).toLowerCase();
 
   void toggle() async {
     state = ThemeMode.dark == state ? ThemeMode.light : ThemeMode.dark;

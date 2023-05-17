@@ -1,7 +1,6 @@
 import 'package:core/app_state/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
@@ -78,47 +77,43 @@ class _CoreAppState extends State<CoreApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Sizer(
-      builder: (context, orientation, deviceType) {
-        return MaterialApp.router(
-          locale: widget.locale,
-          title: widget.title,
-          color: widget.color,
-          actions: widget.actions,
-          builder: widget.builder,
-          darkTheme: widget.darkTheme,
-          theme: widget.theme,
-          themeMode: widget.themeMode,
-          routeInformationParser: widget.appRouter.routeInformationParser,
-          routeInformationProvider: widget.appRouter.routeInformationProvider,
-          routerDelegate: widget.appRouter.routerDelegate,
-          localizationsDelegates: [
-            ...?(widget.localizationsDelegates),
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: widget.dSupportedLocales ?? Localization.all,
-          debugShowCheckedModeBanner: widget.dDebugShowCheckedModeBanner ?? false,
-          debugShowMaterialGrid: widget.dDebugShowMaterialGrid ?? false,
-          checkerboardRasterCacheImages: widget.dCheckerboardRasterCacheImages ?? false,
-          checkerboardOffscreenLayers: widget.dCheckerboardOffscreenLayers ?? false,
-          showSemanticsDebugger: widget.dShowSemanticsDebugger ?? false,
-          showPerformanceOverlay: widget.dShowPerformanceOverlay ?? false,
-          localeListResolutionCallback: widget.localeListResolutionCallback,
-          localeResolutionCallback: widget.localeResolutionCallback,
-          onGenerateTitle: widget.onGenerateTitle,
-          restorationScopeId: widget.restorationScopeId,
-          scaffoldMessengerKey: widget.scaffoldMessengerKey,
-          scrollBehavior: widget.scrollBehavior,
-          shortcuts: widget.shortcuts,
-          useInheritedMediaQuery: widget.useInheritedMediaQuery,
-          themeAnimationCurve: widget.themeAnimationCurve,
-          themeAnimationDuration: widget.themeAnimationDuration,
-          highContrastDarkTheme: widget.highContrastDarkTheme,
-          highContrastTheme: widget.highContrastTheme,
-        );
-      },
+    return MaterialApp.router(
+      locale: widget.locale,
+      title: widget.title,
+      color: widget.color,
+      actions: widget.actions,
+      builder: widget.builder,
+      darkTheme: widget.darkTheme,
+      theme: widget.theme,
+      themeMode: widget.themeMode,
+      routeInformationParser: widget.appRouter.routeInformationParser,
+      routeInformationProvider: widget.appRouter.routeInformationProvider,
+      routerDelegate: widget.appRouter.routerDelegate,
+      localizationsDelegates: [
+        ...?(widget.localizationsDelegates),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: widget.dSupportedLocales ?? Localization.all,
+      debugShowCheckedModeBanner: widget.dDebugShowCheckedModeBanner ?? false,
+      debugShowMaterialGrid: widget.dDebugShowMaterialGrid ?? false,
+      checkerboardRasterCacheImages: widget.dCheckerboardRasterCacheImages ?? false,
+      checkerboardOffscreenLayers: widget.dCheckerboardOffscreenLayers ?? false,
+      showSemanticsDebugger: widget.dShowSemanticsDebugger ?? false,
+      showPerformanceOverlay: widget.dShowPerformanceOverlay ?? false,
+      localeListResolutionCallback: widget.localeListResolutionCallback,
+      localeResolutionCallback: widget.localeResolutionCallback,
+      onGenerateTitle: widget.onGenerateTitle,
+      restorationScopeId: widget.restorationScopeId,
+      scaffoldMessengerKey: widget.scaffoldMessengerKey,
+      scrollBehavior: widget.scrollBehavior,
+      shortcuts: widget.shortcuts,
+      useInheritedMediaQuery: widget.useInheritedMediaQuery,
+      themeAnimationCurve: widget.themeAnimationCurve,
+      themeAnimationDuration: widget.themeAnimationDuration,
+      highContrastDarkTheme: widget.highContrastDarkTheme,
+      highContrastTheme: widget.highContrastTheme,
     );
   }
 }
