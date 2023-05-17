@@ -1,13 +1,9 @@
 import 'package:core/app_state/localization.dart';
-import 'package:core/app_state/providers/locale_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
-
-import 'app_state/providers/theme_provider.dart';
 
 String badInternetConnection = 'Not Internet Connection';
 String appError = 'Something went wrong';
@@ -84,24 +80,17 @@ class _CoreAppState extends State<CoreApp> {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
-        final themeMode = ref.watch(themeModeProvider);
-        final locale = ref.watch(localeProvider);
-        ref.listen(themeModeProvider, (previous, next) {
-          if (next == ThemeMode.dark) {
-            setSystemNavigationBarColor(ThemeMode.dark == themeMode ? Colors.white : Colors.black);
-          }
-        });
         return Sizer(
           builder: (context, orientation, deviceType) {
             return MaterialApp.router(
-              locale: widget.locale ?? locale,
+              locale: widget.locale,
               title: widget.title,
               color: widget.color,
               actions: widget.actions,
               builder: widget.builder,
               darkTheme: widget.darkTheme,
               theme: widget.theme,
-              themeMode: widget.themeMode ?? themeMode,
+              themeMode: widget.themeMode,
               routeInformationParser: widget.appRouter.routeInformationParser,
               routeInformationProvider: widget.appRouter.routeInformationProvider,
               routerDelegate: widget.appRouter.routerDelegate,
