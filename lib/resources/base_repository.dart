@@ -15,7 +15,7 @@ mixin BaseRepository {
         final message = badInternetConnection;
         return DataFailed(message: message);
       } else if (e.isBadRequest) {
-        final message = e.response?.data?['message']['uz'] ?? 'Bad request';
+        final message = e.response?.data?['message'] ?? 'Bad request';
         return DataFailed(message: message);
       } else {
         final message = appError;
