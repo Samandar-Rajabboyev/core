@@ -10,7 +10,7 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
     state = darkMode == null ? ThemeMode.system : ThemeMode.values.firstWhere((element) => element.name == darkMode);
   }
 
-  ThemeModeNotifier() : super(ThemeMode.system) {
+  ThemeModeNotifier({ThemeMode? themeMode}) : super(themeMode ?? ThemeMode.system) {
     _init();
   }
 
