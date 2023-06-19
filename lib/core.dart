@@ -12,5 +12,4 @@ export 'router/route_transitions.dart';
 export 'services/services.dart';
 export 'services/utils.dart';
 export 'package:flutter_riverpod/flutter_riverpod.dart';
-export 'package:sizer/sizer.dart';
 export 'package:go_router/go_router.dart';
