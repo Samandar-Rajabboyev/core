@@ -17,7 +17,7 @@ dependencies:
   cupertino_icons:
   retrofit:
   shared_preferences:
-  go_router: ^8.0.5
+  go_router:
   logger:
   flutter_riverpod:
 
