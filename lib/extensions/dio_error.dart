@@ -3,11 +3,13 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 
 extension DioErrorX on DioError {
-  bool get isBadConnection => type == DioErrorType.connectionTimeout;
+  bool get isNoConnection =>
+      (type == DioErrorType.unknown ||
+          type == DioErrorType.connectionTimeout ||
+          type == DioErrorType.connectionError) &&
+      error is SocketException;
 
-  bool get isNoConnection => type == DioErrorType.unknown && error is SocketException;
-
-  bool get isBadRequest => (400 <= (response?.statusCode ?? 499) && (response?.statusCode ?? 499) < 500);
+  bool get isBadRequest => (400 <= (response?.statusCode ?? -1) && (response?.statusCode ?? -1) < 500);
 }
 
 extension ResponceX on Response {

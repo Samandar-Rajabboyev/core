@@ -11,25 +11,82 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A dart package for many helper methods fitting different situations.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- localizations
+- theme
+- extensions
+    - dio_error
+    - empty_padding
+    - navigation
+    - toast
+- base class for repository
+- base class for data
+- base class for use case
+- route_transitions
+- [logger_service](#logger-service)
+- [local_storage](#local-storage)
+- [hide_keyboard](#hide-keyboard)
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```yaml
+  core:
+    git: https://gitlab.com/softexteam/softexmobile/core.git
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+### Hide Keyboard
 
 ```dart
-const like = 'sample';
+hideKeyboard();
+```
+
+### Local Storage
+```dart
+String someKey = 'some_key';
+String? someValue = 'some_value';
+
+Set<String> keys = await Prefs.getKeys();
+
+bool isContainsSomeKey = await Prefs.containsKey(someKey);
+
+if (isContainsSomeKey) {
+    await Prefs.setString(someKey, someValue);
+} else {
+    someVaule = await Prefs.getString(someKey);
+}
+
+Prefs.remove(someKey);
+```
+
+### Logger Service
+
+🐛 Debug
+
+```dart
+Logger.d("Debug log.");
+```
+
+💡 Info
+
+```dart
+Logger.i("Info log.");
+```
+
+⚠️ Warning
+
+```dart
+Logger.w("Warning log.");
+```
+
+⛔ Error
+
+```dart
+Logger.e("Error log.");
 ```
 
 ## Additional information

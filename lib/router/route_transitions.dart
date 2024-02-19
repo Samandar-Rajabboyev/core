@@ -6,6 +6,7 @@ extension PageTransition on Widget {
     return NoTransitionPage(
       child: this,
       key: state.pageKey,
+      name: state.name,
     );
   }
 
@@ -13,6 +14,7 @@ extension PageTransition on Widget {
     return CupertinoPage(
       child: this,
       key: state.pageKey,
+      name: state.name,
     );
   }
 
@@ -35,6 +37,7 @@ extension PageTransition on Widget {
 
     return CustomTransitionPage(
       key: state.pageKey,
+      name: state.name,
       child: this,
       transitionsBuilder: (context, animation, secondaryAnimation, child) =>
           buildTransitions(context, animation, secondaryAnimation, child),

@@ -1,10 +1,17 @@
 import 'package:core/app_state/localization.dart';
+import 'package:core/resources/base_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:dio/dio.dart';
 
 String badInternetConnection = 'Not Internet Connection';
 String appError = 'Something went wrong';
+Map<Type, DataFactory> dataModelFactories = {};
+
+typedef MessageConverter = String Function(Response<dynamic>? response);
+
+MessageConverter messageConverter = (Response<dynamic>? response) => response?.data?['message'] ?? 'Bad request';
 
 class CoreApp extends MaterialApp {
   final bool? dDebugShowMaterialGrid;
@@ -17,9 +24,13 @@ class CoreApp extends MaterialApp {
   final GoRouter appRouter;
   final String? badInternetConnection;
   final String? appError;
+  final Map<Type, DataFactory>? dataModelFactories;
+  final MessageConverter? messageConverter;
 
   const CoreApp({
     Key? key,
+    this.messageConverter,
+    this.dataModelFactories,
     this.badInternetConnection,
     this.appError,
     required this.appRouter,
@@ -72,6 +83,8 @@ class _CoreAppState extends State<CoreApp> {
     super.initState();
     if (widget.badInternetConnection != null) badInternetConnection = widget.badInternetConnection!;
     if (widget.appError != null) appError = widget.appError!;
+    if (widget.dataModelFactories != null) dataModelFactories = widget.dataModelFactories!;
+    if (widget.messageConverter != null) messageConverter = widget.messageConverter!;
   }
 
   @override

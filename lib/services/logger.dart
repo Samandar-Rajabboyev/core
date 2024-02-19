@@ -48,7 +48,7 @@ class LogService {
   }
 
   static void errorResponse(DioError error) {
-    if (error.isNoConnection || error.isBadConnection) {
+    if (error.isNoConnection) {
       _logger.e('BAD CONNECTION: $badInternetConnection');
     } else {
       _logger.e(
